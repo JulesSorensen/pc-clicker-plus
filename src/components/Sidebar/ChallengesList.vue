@@ -97,7 +97,7 @@ watch(
               </v-card-text>
 
               <v-card-text>
-                {{ challenge.progress }}/{{ challenge.objective.goal }}
+                {{ formatNumber(challenge.progress, 3) }}/{{ formatNumber(challenge.objective.goal) }}
               </v-card-text>
 
               <v-progress-linear :model-value="(challenge.progress / challenge.objective.goal) * 100" color="black"
