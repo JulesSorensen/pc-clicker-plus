@@ -8,6 +8,7 @@ import { useMoneyStore } from "@/stores/moneyStore";
 import { useXpStore } from "@/stores/xpStore";
 import { onMounted, ref, watch } from "vue";
 import { reactive } from 'vue';
+import { formatNumber } from '@/services/string';
 
 const moneyStore = useMoneyStore();
 const xpStore = useXpStore();
@@ -105,10 +106,10 @@ watch(
             <div class="reward-container">
               <div class="reward-item">
                 <span class="label">Récompenses :</span>
-                <span class="value">{{ challenge.reward.xp }} xp</span>
+                <span class="value">{{ formatNumber(challenge.reward.xp) }} xp</span>
               </div>
               <div class="reward-item">
-                <span class="value">{{ challenge.reward.money }} $</span>
+                <span class="value">{{ formatNumber(challenge.reward.money) }} $</span>
               </div>
             </div>
 
