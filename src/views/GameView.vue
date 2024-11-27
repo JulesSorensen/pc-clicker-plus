@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import GamePannel from '@/components/GamePannel.vue';
 import GameSidebar from '@/components/GameSidebar.vue';
-import InfoMoneyExp from '@/components/Sidebar/InfoMoneyExp.vue';
 </script>
 
 <template>
   <div class="gameView">
     <div class="gamePannel">
-      <InfoMoneyExp/>
       <GamePannel />
     </div>
     <div class="gameSidebar">
@@ -17,7 +15,8 @@ import InfoMoneyExp from '@/components/Sidebar/InfoMoneyExp.vue';
 </template>
 
 <style>
-html,body{
+html,
+body {
   width: 100%;
 }
 
@@ -35,9 +34,8 @@ html,body{
 .gamePannel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items:center;
-  /* height: 45%; */
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   font-family: 'PixelFont';
 }
