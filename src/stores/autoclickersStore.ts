@@ -21,13 +21,16 @@ export const useAutoclickersStore = defineStore('autoclickers', () => {
   })
 
   const totalAutoClickers = computed(() =>
-    autoclickers.value.reduce((sum, ac) => sum + ac.currentAmount, 0)
-  );
+    autoclickers.value.reduce((sum, ac) => sum + ac.currentAmount, 0),
+  )
 
   const addAutoClicker = (id: number): boolean => {
     const autoclicker = autoclickers.value.find((auto) => auto.id === id)
-    if(!autoclicker)return false
-    const newPrice = autoclicker.price* Math.pow(1.1, autoclicker.currentAmount-1)
+    if (!autoclicker) return false
+    const newPrice =
+      autoclicker.currentAmount == 0
+        ? autoclicker.price
+        : autoclicker.price * Math.pow(1.1, autoclicker.currentAmount)
     if (newPrice > money.value) return false
 
     moneyStore.removeMoney(newPrice)

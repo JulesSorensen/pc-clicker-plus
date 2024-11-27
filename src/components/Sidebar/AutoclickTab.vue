@@ -29,7 +29,9 @@ const buyAutoClicker = (id: number) => {
 
 <template>
   <v-col v-for="autoClicker in autoclickers" :key="autoClicker.id" cols="12">
-    <v-card :class="autoClicker.price* Math.pow(1.1, autoClicker.currentAmount-1) < money ? 'pixel-card' : 'card'" @click="buyAutoClicker(autoClicker.id)">
+    <v-card
+      :class="(autoClicker.currentAmount == 0 ? autoClicker.price : autoClicker.price * Math.pow(1.1, autoClicker.currentAmount)) < money ? 'pixel-card' : 'card'"
+      @click="buyAutoClicker(autoClicker.id)">
       <v-row align="center">
         <v-col cols="4" class="image-container">
           <img :src="autoClicker.image" alt="AutoClicker" class="pixel-image">
@@ -37,10 +39,10 @@ const buyAutoClicker = (id: number) => {
         <v-col cols="7">
           <v-card-title class="pixel-title">{{ autoClicker.name }}{{ autoClicker.currentAmount ? `
             (${formatNumber(autoClicker.currentAmount)})` : "" }}</v-card-title>
-          <v-card-text class="pixel-description">{{ formatNumber(autoClicker.price* Math.pow(1.1, autoClicker.currentAmount-1)) }} $</v-card-text>
+          <v-card-text class="pixel-description">{{ formatNumber(autoClicker.currentAmount == 0 ? autoClicker.price :
+            autoClicker.price * Math.pow(1.1, autoClicker.currentAmount)) }} $</v-card-text>
           <v-card-text class="pixel-description">{{ autoClicker.description }}</v-card-text>
           <v-card-text class="pixel-description">{{ formatNumber(autoClicker.cps) }}$/sec</v-card-text>
-
         </v-col>
       </v-row>
     </v-card>
@@ -58,7 +60,7 @@ const buyAutoClicker = (id: number) => {
   flex-direction: row;
 }
 
-.card{
+.card {
   background-color: #333333;
   border: 4px solid #000;
   border-radius: 8px;
