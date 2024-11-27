@@ -84,9 +84,7 @@ const showAlert = () => {
   max-height: 80vh;
   overflow-y: auto;
   -ms-overflow-style: none;
-  /* Hide Scrollbar IE and Edge */
   scrollbar-width: none;
-  /* Hide Scrollbar Firefox */
 }
 
 .relative {

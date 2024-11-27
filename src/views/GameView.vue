@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import GamePannel from '@/components/GamePannel.vue';
 import GameSidebar from '@/components/GameSidebar.vue';
+import InfoMoneyExp from '@/components/Sidebar/InfoMoneyExp.vue';
 </script>
 
 <template>
   <div class="gameView">
     <div class="gamePannel">
+      <InfoMoneyExp/>
       <GamePannel />
     </div>
     <div class="gameSidebar">
@@ -23,7 +25,7 @@ html,body{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: stretch;
   height: 100%;
   width: 100%;
   background-color: #313338;
@@ -34,15 +36,10 @@ html,body{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  height: 45%;
+  align-items:center;
+  /* height: 45%; */
   width: 100%;
   font-family: 'PixelFont';
-}
-
-.levelCounter {
-  font-size: 2rem;
-  color: #ccc;
 }
 
 .moneyCounter {
