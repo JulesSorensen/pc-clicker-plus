@@ -41,8 +41,6 @@ html, body {
   -ms-user-select: none; /* Pour Internet Explorer */
 }
 
-img {
-  pointer-events: none;
-}
+
 </style>
 
