@@ -11,7 +11,7 @@ export const formatNumber = (n: number, f: number = 0): string => {
     const formatted = (n / 1_000).toFixed(f)
     return formatted.endsWith('.0') ? formatted.slice(0, -2) + 'K' : formatted + 'K'
   } else {
-    return n.toString()
+    return n.toFixed(0)
   }
 }
 

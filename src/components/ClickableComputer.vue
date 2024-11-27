@@ -40,12 +40,20 @@ const manualClick = () => {
   sound.play().catch((error) => {
     console.error('Erreur lors de la lecture du son :', error);
   });
+
+  currentImage.value = pressedImage;
+  setTimeout(() => {
+    currentImage.value = defaultImage;
+  }, 100);
 }
 
 const currentImage = ref(defaultImage);
 
 const onMouseDown = () => {
   currentImage.value = pressedImage;
+  setTimeout(() => {
+    currentImage.value = defaultImage;
+  }, 100);
 };
 
 const onMouseUp = () => {
@@ -54,7 +62,13 @@ const onMouseUp = () => {
 
 const onHotkey = (event: KeyboardEvent) => {
   const keys = ["a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "w", "x", "c", "v", "b", "n"];
-  if (keys.includes(event.key)) manualClick();
+  if (keys.includes(event.key)) {
+    manualClick();
+    currentImage.value = pressedImage;
+    setTimeout(() => {
+      currentImage.value = defaultImage;
+    }, 200);
+  }
 };
 
 window.addEventListener('keyup', onHotkey);

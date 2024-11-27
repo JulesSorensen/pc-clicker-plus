@@ -88,4 +88,13 @@ const showAlert = () => {
   scrollbar-width: none;
   /* Hide Scrollbar Firefox */
 }
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  z-index: 100;
+}
 </style>

@@ -11,15 +11,10 @@ export const authenticateAnonymously = async () => {
   }
 }
 
-export const onUserAuthStateChanged = (callback: (user: any) => void) => {
-  onAuthStateChanged(auth, callback)
-}
-
 export const initializeAuth = (): Promise<void> => {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        // Si aucun utilisateur, démarre une session anonyme
         try {
           await signInAnonymously(auth)
           resolve()
