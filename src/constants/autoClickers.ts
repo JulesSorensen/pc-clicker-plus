@@ -15,7 +15,7 @@ export const AUTO_CLICKERS: AutoClicker[] = [
     name: 'Stagiaire 2.0',
     price: 150,
     cps: 5,
-    description: 'Le stagiaire 2.0 : dispose d\'un termo de café sur son bureau.',
+    description: "Le stagiaire 2.0 : dispose d'un termo de café sur son bureau.",
     image: new URL('../assets/autoClickerImages/Stagiaire2_0.png', import.meta.url).href,
     currentAmount: 0,
   },
@@ -35,7 +35,7 @@ export const AUTO_CLICKERS: AutoClicker[] = [
     price: 600,
     cps: 15,
     description: "L'alternant : l'expert en multi-tâches et en recherche d'email à répondre.",
-    image: new URL('../assets/autoClickerImages/Alternant.png', import.meta.url).href,
+    image: new URL('../assets/autoClickerImages/alternant.png', import.meta.url).href,
     currentAmount: 0,
   },
   {
@@ -45,7 +45,7 @@ export const AUTO_CLICKERS: AutoClicker[] = [
     cps: 25,
     description:
       'Le développeur : une machine à coder, mais qui oublie parfois de faire ses commits.',
-    image: new URL('../assets/autoClickerImages/Developpeur.png', import.meta.url).href,
+    image: new URL('../assets/autoClickerImages/developpeur.png', import.meta.url).href,
     currentAmount: 0,
   },
   {
