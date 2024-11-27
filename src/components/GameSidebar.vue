@@ -19,14 +19,15 @@ const showAlert = () => {
 
 <template>
   <div class="sidebar">
-    <v-card color="grey-darken-1">
-      <v-alert :hidden="alert" color="error" text="Tu es trop pauvre ! Reviens après avoir plus clické !" />
-      <v-tabs v-model="currentTab" align-tabs="center" color="grey-darken-4">
-        <v-tab :value="'autoclick'">Recrutement</v-tab>
-        <v-tab :value="'pc'">Compétences</v-tab>
-        <v-tab :value="'challenge'">Défis</v-tab>
-        <v-tab :value="'leaderboard'">Classement</v-tab>
+    <v-card color="transparent" class="relative elevation-0">
+      <v-tabs v-model="currentTab" align-tabs="center" color="blue">
+        <v-tab base-color="white" :value="'autoclick'">Recrutement</v-tab>
+        <v-tab base-color="white" :value="'pc'">Compétences</v-tab>
+        <v-tab base-color="white" :value="'challenge'">Défis</v-tab>
+        <v-tab base-color="white" :value="'leaderboard'">Classement</v-tab>
       </v-tabs>
+      <v-alert :hidden="alert" class="absolute" color="error"
+        text="Tu es trop pauvre ! Reviens après avoir plus clické !" />
 
       <v-tabs-window v-model="currentTab">
         <v-tabs-window-item v-for="tab in ['autoclick', 'pc', 'challenge', 'leaderboard']" :key="tab" :value="tab">

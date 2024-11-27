@@ -42,7 +42,6 @@ const getChallengeClass = (challenge: Challenge) => {
 };
 
 const claimReward = async (challenge: Challenge) => {
-  console.log(challenge.progress)
   if (challenge.progress >= challenge.objective.goal && !challenge.rewardClaimed) {
     moneyStore.addMoney(challenge.reward.money);
     xpStore.addXp(challenge.reward.xp);
@@ -75,9 +74,7 @@ onMounted(async () => {
 
 watch(
   () => [moneyStore.money, clickStore.clicks, autoclickersStore.autoclickers],
-  ([newMoney, newClicks, newAutoclicker]) => {
-    console.log('Money:', newMoney, 'Clicks:', newClicks, 'AutoClicker:', newAutoclicker);
-
+  () => {
     myChallenges.forEach((challenge) => {
       challenge.progress = calculateProgress(challenge);
     });

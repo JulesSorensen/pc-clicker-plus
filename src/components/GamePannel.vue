@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 import { useAutoclickersStore } from '@/stores/autoclickersStore';
 import { useMoneyStore } from '@/stores/moneyStore';
 import { useXpStore } from '@/stores/xpStore';
 
 import ClickableComputer from '@/components/ClickableComputer.vue';
-import type { ComputedRef } from 'vue';
+import { XP_PER_LEVELS } from '@/constants/levels';
 import type { AutoClicker } from '@/models/autoClicker';
 import { formatNumber } from '@/services/string';
-import { XP_PER_LEVELS } from '@/constants/levels';
+import type { ComputedRef } from 'vue';
 
 const moneyStore = useMoneyStore()
 const xpStore = useXpStore()
@@ -19,6 +19,22 @@ const autoclickersStore = useAutoclickersStore()
 const { money } = storeToRefs(moneyStore)
 const { xp } = storeToRefs(xpStore)
 const { autoclickers } = storeToRefs(autoclickersStore)
+
+const strippedXp = ref(0);
+const isStripped = ref(false);
+const strippedXpTimeout = ref(0);
+
+watch(xp, () => {
+  isStripped.value = true;
+  strippedXp.value = xp.value;
+
+  clearTimeout(strippedXpTimeout.value);
+  strippedXpTimeout.value = setTimeout(() => {
+    if (strippedXp.value === xp.value) {
+      isStripped.value = false;
+    }
+  }, 500);
+});
 
 const level = computed(() => {
   let currentLevel = 1;
@@ -60,7 +76,6 @@ const nextLevelProgress = computed(() => {
 });
 
 const totalAutoclickers: ComputedRef<number> = computed(() => {
-  console.log(autoclickers)
   return autoclickers.value
     .map((auto: AutoClicker) => auto.currentAmount)
     .reduce((acc: number, val: number) => acc + val, 0)
@@ -78,6 +93,15 @@ const handleAutoclicking = (): void => {
 
 }
 
+const autoclickingInterval = computed(() => {
+  let sum = 0;
+  for (const auto of autoclickers.value) {
+    sum += auto.currentAmount * auto.cps;
+  }
+
+  return sum;
+});
+
 setInterval(handleAutoclicking, 1000);
 
 </script>
@@ -87,12 +111,14 @@ setInterval(handleAutoclicking, 1000);
     <v-col class="d-flex flex-column">
       <v-row>
         <v-col>
-          <p class="levelCounter" style="font-size: 0.8rem;">Niveau : {{ level }} ({{ formatNumber(xp) }} XP)</p>
+          <p class="levelCounter" style="font-size: 1rem;">Niveau {{ level }} ({{ formatNumber(xp) }} XP)</p>
+          <p class="levelCounter" style="font-size: 0.7rem;">Productivité : {{ formatNumber(autoclickingInterval) }} cps
+          </p>
         </v-col>
       </v-row>
       <v-row>
         <v-col>
-          <v-progress-linear color="blue" height="10" :model-value="nextLevelProgress" striped />
+          <v-progress-linear color="blue" height="10" :model-value="nextLevelProgress" :striped="isStripped" />
         </v-col>
       </v-row>
     </v-col>

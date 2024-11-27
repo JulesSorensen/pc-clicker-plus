@@ -27,9 +27,6 @@ const acquiredSkills = computed(() => {
   return skills.value.filter((skill) => skill.isAcquired);
 });
 
-console.log(acquiredSkills.value, "acquiredSkills");
-console.log(acquiredSkills.value[acquiredSkills.value.length - 1], "lastSkill");
-
 const manualClick = () => {
   addMoney(1 * acquiredSkills.value[acquiredSkills.value.length - 1].multiplier)
   addXp(1)
@@ -60,7 +57,7 @@ const onHotkey = (event: KeyboardEvent) => {
   if (keys.includes(event.key)) manualClick();
 };
 
-window.addEventListener('keydown', onHotkey);
+window.addEventListener('keyup', onHotkey);
 </script>
 
 <template>

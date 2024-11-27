@@ -16,7 +16,7 @@ export const useLeaderboard = (): { users: Ref<User[] | null>; subscribe: () => 
 
   const subscribe = (): Unsubscribe => {
     return onSnapshot(
-      query(collection(db, 'users'), orderBy('money', 'desc')),
+      query(collection(db, 'users'), orderBy('xp', 'desc')),
       (querySnapshot) => {
         users.value = querySnapshot.docs.map((doc) => ({
           id: doc.id,

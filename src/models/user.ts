@@ -5,7 +5,7 @@ export type User = {
   id?: string
   name: string
   money: number
-  experience: number
+  xp: number
   autoClickers: AutoClickerDb[]
   skills: Skill[]
   completedChallenges: number[]

@@ -24,7 +24,7 @@ export const useMoneyStore = defineStore('money', () => {
 
     saveData({ money: money.value })
     memoryMoney.value = money.value
-  }, 1000 * 10)
+  }, 1000 * 30)
 
   return { money, addMoney, removeMoney }
 })
