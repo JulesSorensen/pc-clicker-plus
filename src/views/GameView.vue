@@ -40,9 +40,8 @@ body {
 .gameView {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: stretch;
-  height: 100%;
   width: 100%;
   background-color: #313338;
 }
@@ -53,6 +52,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
   width: 100%;
   font-family: 'PixelFont';
 }

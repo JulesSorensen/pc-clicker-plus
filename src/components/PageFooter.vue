@@ -10,10 +10,8 @@
 .v-footer {
     padding: 15px;
     background-color: #282c34;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    max-height: 100px;
+    min-height: 100px;
 }
 
 .txt-footer {

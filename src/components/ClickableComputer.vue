@@ -61,7 +61,7 @@ const onMouseUp = () => {
 };
 
 const onHotkey = (event: KeyboardEvent) => {
-  const keys = ["a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "w", "x", "c", "v", "b", "n"];
+  const keys = ["a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "w", "x", "c", "v", "b", "n", " "];
   if (keys.includes(event.key)) {
     manualClick();
     currentImage.value = pressedImage;
