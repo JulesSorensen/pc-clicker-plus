@@ -58,11 +58,10 @@ const showAlert = () => {
 
 .sidebar {
   display: flex;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   width: 90%;
   overflow-y: auto;
   user-select: none;
