@@ -19,8 +19,8 @@ body {
 }
 
 .app {
-  min-width: 100vh;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   background-color: #313338;
   display: flex;
   flex-direction: column;
